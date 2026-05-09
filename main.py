@@ -4,8 +4,7 @@ from datetime import datetime
 import json
 import os
 import asyncio
-import edge_tts
-import pygame
+import edge_tts 
 import random
 import webbrowser
 import subprocess
@@ -34,14 +33,6 @@ async def tts(text):
 
     await communicate.save(file_name)
 
-    pygame.mixer.init()
-    pygame.mixer.music.load(file_name)
-    pygame.mixer.music.play()
-
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(10)
-
-    pygame.mixer.quit()
 
     try:
         os.remove(file_name)
@@ -51,8 +42,6 @@ async def tts(text):
 
 def stop_speaking():
     try:
-        pygame.mixer.music.stop()
-        pygame.mixer.quit()
         print("Echo fermato.")
     except:
         pass
